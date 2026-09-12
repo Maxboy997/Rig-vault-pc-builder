@@ -1,0 +1,134 @@
+[
+  {
+    "id": "rtx-4070",
+    "name": "NVIDIA GeForce RTX 4070",
+    "category": "GPU",
+    "price": "599",
+    "description": "A capable mid-range GPU that handles 1440p gaming and creative workloads with ease.",
+    "icon": "https://cdn.simpleicons.org/nvidia/76B900",
+    "rating": 4.7,
+    "tier": "Mid-Range",
+    "badge": "Best Value"
+  },
+  {
+    "id": "ryzen-7800x3d",
+    "name": "AMD Ryzen 7 7800X3D",
+    "category": "CPU",
+    "price": "299",
+    "description": "A gaming-focused CPU with 3D V-Cache that dominates frame-rate-sensitive titles.",
+    "icon": "https://cdn.simpleicons.org/amd/ED1C24",
+    "rating": 4.9,
+    "tier": "Enthusiast",
+    "badge": "Overclocker's Pick"
+  },
+  {
+    "id": "rtx-4090",
+    "name": "NVIDIA GeForce RTX 4090",
+    "category": "GPU",
+    "price": "1,599",
+    "description": "The ultimate flagship GPU delivering uncompromised 4K performance and ray tracing.",
+    "icon": "https://cdn.simpleicons.org/nvidia/76B900",
+    "rating": 4.9,
+    "tier": "Enthusiast",
+    "badge": "Beast Performance"
+  },
+  {
+    "id": "intel-i5-14600k",
+    "name": "Intel Core i5-14600K",
+    "category": "CPU",
+    "price": "319",
+    "description": "14-core hybrid architecture delivering high single-core performance for gaming and multitasking.",
+    "icon": "https://cdn.simpleicons.org/intel/0071C5",
+    "rating": 4.6,
+    "tier": "Mid-Range",
+    "badge": "Balanced Pick"
+  },
+  {
+    "id": "asus-z790-e",
+    "name": "ASUS ROG Strix Z790-E",
+    "category": "Motherboard",
+    "price": "949",
+    "description": "Robust power delivery, PCIe 5.0 expansion, and Wi-Fi 6E for high-end Intel builds.",
+    "icon": "https://cdn.simpleicons.org/asus/000000",
+    "rating": 4.8,
+    "tier": "Enthusiast",
+    "badge": "Feature Packed"
+  },
+  {
+    "id": "corsair-vengeance-ddr5",
+    "name": "Corsair Vengeance 32GB DDR5",
+    "category": "RAM",
+    "price": "149",
+    "description": "High-frequency 6000MHz memory modules optimized for Intel and AMD motherboards.",
+    "icon": "https://cdn.simpleicons.org/corsair/231F20",
+    "rating": 4.7,
+    "tier": "Mid-Range",
+    "badge": "Ultra Fast"
+  },
+  {
+    "id": "samsung-990-pro",
+    "name": "Samsung 990 Pro 2TB NVMe",
+    "category": "Storage",
+    "price": "999",
+    "description": "PCIe Gen 4.0 SSD with sequential read speeds up to 7450 MB/s for near-instant loads.",
+    "icon": "https://cdn.simpleicons.org/samsung/1428A0",
+    "rating": 4.9,
+    "tier": "Enthusiast",
+    "badge": "Blazing Speed"
+  },
+  {
+    "id": "seasonic-gx850",
+    "name": "Seasonic Focus GX-850",
+    "category": "PSU",
+    "price": "129",
+    "description": "80 Plus Gold certified fully modular power supply with quiet fan control.",
+    "icon": "https://cdn.simpleicons.org/simpleicons/334155",
+    "rating": 4.8,
+    "tier": "Mid-Range",
+    "badge": "Whisper Quiet"
+  },
+  {
+    "id": "nzxt-kraken-360",
+    "name": "NZXT Kraken Elite 360",
+    "category": "Cooling",
+    "price": "199",
+    "description": "Premium 360mm AIO liquid cooler with customizable LCD display and quiet F120 RGB fans.",
+    "icon": "https://cdn.simpleicons.org/nzxt/000000",
+    "rating": 4.7,
+    "tier": "Enthusiast",
+    "badge": "Premium AIO"
+  },
+  {
+    "id": "msi-b650-tomahawk",
+    "name": "MSI MAG B650 Tomahawk WiFi",
+    "category": "Motherboard",
+    "price": "899",
+    "description": "Durable AM5 motherboard featuring heavy plated heatsinks and Lightning Gen 4 M.2 slots.",
+    "icon": "https://cdn.simpleicons.org/msi/FF0000",
+    "rating": 4.6,
+    "tier": "Mid-Range",
+    "badge": "Solid Build"
+  },
+  {
+    "id": "gskill-trident-z5",
+    "name": "G.Skill Trident Z5 RGB 64GB",
+    "category": "RAM",
+    "price": "349",
+    "description": "Extreme performance DDR5 memory designed for content creators and heavy workloads.",
+    "icon": "https://cdn.simpleicons.org/simpleicons/334155",
+    "rating": 4.8,
+    "tier": "Enthusiast",
+    "badge": "Premium RGB"
+  },
+  {
+    "id": "noctua-nh-d15",
+    "name": "Noctua NH-D15 chromax.black",
+    "category": "Cooling",
+    "price": "149",
+    "description": "Legendary dual-tower air cooler offering liquid-cooling class performance with silence.",
+    "icon": "https://cdn.simpleicons.org/noctua/7A5230",
+    "rating": 4.9,
+    "tier": "Mid-Range",
+    "badge": "Air King"
+  }
+]
