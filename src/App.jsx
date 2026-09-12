@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ComponentGrid from './components/ComponentGrid';
@@ -25,17 +27,37 @@ function App() {
   }, []);
 
   const handleAddToBuild = (item) => {
-    if (!stack.some((s) => s.id === item.id)) {
-      setStack([...stack, item]);
+    if (stack.some((s) => s.id === item.id)) {
+      toast.warn(`${item.name} is already in your build!`, {
+        position: "bottom-right",
+        theme: "dark",
+      });
+      return;
     }
+    setStack([...stack, item]);
+    toast.success(`${item.name} added to your build!`, {
+      position: "bottom-right",
+      theme: "dark",
+    });
   };
 
   const handleRemoveFromBuild = (id) => {
+    const removedItem = stack.find(s => s.id === id);
     setStack(stack.filter((item) => item.id !== id));
+    if (removedItem) {
+      toast.info(`${removedItem.name} removed from build.`, {
+        position: "bottom-right",
+        theme: "dark",
+      });
+    }
   };
 
   const handleClearAll = () => {
     setStack([]);
+    toast.info("Build stack cleared.", {
+      position: "bottom-right",
+      theme: "dark",
+    });
   };
 
   return (
@@ -63,6 +85,7 @@ function App() {
       </main>
 
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
