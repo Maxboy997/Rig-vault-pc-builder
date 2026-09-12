@@ -51,6 +51,7 @@ React follows a **unidirectional (top-down)** data flow:
 
 
 
-💬 Client Testimonial (Simulation Feedback)
+### 💬 Client Testimonial (Simulation Feedback)
+
 "The work itself: Genuinely solid. Everything in the original spec works... None of them were half-baked bolt-ons, they were wired in cleanly... That’s the difference between someone who can code and someone who can ship."
 — Claude, ForgeBench (Freelance Client Simulation)
