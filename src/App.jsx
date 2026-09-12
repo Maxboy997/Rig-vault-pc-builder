@@ -8,30 +8,78 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 
 // Sound Effect Helper (Pure JS Web Audio API - no external assets needed)
+// Enhanced Audio Feedback (Messenger-style Ping & Bell Chimes)
 const playAudioFeedback = (type = 'add') => {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
 
     if (type === 'add') {
-      osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
-      osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.1); // G5
+      // Messenger-style Crisp "Ping" Bell Sound
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc1.type = 'sine';
+      osc2.type = 'sine';
+
+      // High Harmonic Chime (E5 -> E6 & B5 -> B6)
+      osc1.frequency.setValueAtTime(659.25, ctx.currentTime); 
+      osc1.frequency.exponentialRampToValueAtTime(1318.51, ctx.currentTime + 0.08);
+
+      osc2.frequency.setValueAtTime(987.77, ctx.currentTime);
+      osc2.frequency.exponentialRampToValueAtTime(1975.53, ctx.currentTime + 0.08);
+
+      // Boosted Volume (0.35)
+      gain.gain.setValueAtTime(0.35, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc1.start();
+      osc2.start();
+      osc1.stop(ctx.currentTime + 0.35);
+      osc2.stop(ctx.currentTime + 0.35);
+
     } else if (type === 'warn') {
-      osc.frequency.setValueAtTime(300, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15);
+      // Clear Warning Double Bell Tone
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.setValueAtTime(440.00, ctx.currentTime + 0.08); // A4
+
+      gain.gain.setValueAtTime(0.30, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+
     } else if (type === 'remove') {
-      osc.frequency.setValueAtTime(440, ctx.currentTime); // A4
-      osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.12); // A3
+      // Crisp Mechanical Pop / Click
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(480, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.06);
+
+      gain.gain.setValueAtTime(0.30, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.06);
     }
-    gain.gain.setValueAtTime(0.08, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.12);
   } catch (e) {
     console.error(e);
   }
