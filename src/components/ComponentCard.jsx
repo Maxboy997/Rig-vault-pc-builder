@@ -52,3 +52,4 @@ const ComponentCard = ({ item, onAddToBuild, isSelected }) => {
 };
 
 export default ComponentCard;
+// component card interaction state
