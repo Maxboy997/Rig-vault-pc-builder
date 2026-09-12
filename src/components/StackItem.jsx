@@ -2,27 +2,26 @@ import { X } from 'lucide-react';
 
 const StackItem = ({ item, onRemove }) => {
   return (
-    <div className="flex items-center justify-between p-3 rounded-lg bg-slate-800/60 border border-slate-700/50 hover:border-slate-600 transition-colors">
-      <div className="flex items-center gap-3 min-w-0">
-        <div className="w-8 h-8 rounded bg-slate-900 p-1.5 flex items-center justify-center shrink-0 border border-slate-800">
-          <img src={item.icon} alt={item.name} className="w-full h-full object-contain filter invert" />
+    <div className="bg-slate-950/80 border border-slate-800 rounded-lg p-3 flex items-start justify-between gap-3 hover:border-slate-700 transition-colors">
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 uppercase tracking-wide">
+            {item.category}
+          </span>
+          <span className="text-[10px] text-slate-500 font-medium">~{item.wattage || 0}W</span>
         </div>
-        <div className="min-w-0">
-          <h4 className="text-xs font-bold text-slate-200 truncate">{item.name}</h4>
-          <span className="text-[10px] text-slate-400">{item.category}</span>
-        </div>
+        <h4 className="text-xs font-semibold text-white leading-tight break-words line-clamp-2">
+          {item.name}
+        </h4>
+        <p className="text-xs font-bold text-orange-400 mt-1">${item.price}</p>
       </div>
-
-      <div className="flex items-center gap-3 shrink-0">
-        <span className="text-xs font-bold text-orange-400">${item.price || 0}</span>
-        <button
-          onClick={() => onRemove(item.id)}
-          className="p-1 rounded text-slate-400 hover:text-red-400 hover:bg-slate-700/50 transition-colors"
-          title="Remove item"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      </div>
+      <button
+        onClick={() => onRemove(item.id)}
+        className="text-slate-500 hover:text-red-400 p-1 rounded-md hover:bg-red-500/10 transition-colors shrink-0"
+        title="Remove item"
+      >
+        <X className="w-4 h-4" />
+      </button>
     </div>
   );
 };
