@@ -8,13 +8,11 @@ import Footer from './components/Footer';
 function App() {
   const [components, setComponents] = useState([]);
   
-  // LocalStorage থেকে ইনিশিয়াল স্টেট লোড করা
   const [stack, setStack] = useState(() => {
     const savedStack = localStorage.getItem('rigvault_stack');
     return savedStack ? JSON.parse(savedStack) : [];
   });
 
-  // Stack চেঞ্জ হলেই LocalStorage-এ সেভ করা
   useEffect(() => {
     localStorage.setItem('rigvault_stack', JSON.stringify(stack));
   }, [stack]);

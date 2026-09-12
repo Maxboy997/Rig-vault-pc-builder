@@ -5,7 +5,6 @@ import { Layers, Trash2, DollarSign, Zap, Share2, Check } from 'lucide-react';
 const Sidebar = ({ stack, onRemove, onClearAll }) => {
   const [copied, setCopied] = useState(false);
 
-  // Price Calculation
   const totalPrice = stack.reduce((sum, item) => {
     const rawPrice = item.price;
     const priceNum = typeof rawPrice === 'number'
@@ -14,12 +13,22 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
     return sum + priceNum;
   }, 0);
 
-  // Wattage Calculation
   const totalWattage = stack.reduce((sum, item) => sum + (Number(item.wattage) || 0), 0);
+
+  const handleCopyBuild = () => {
+    const buildText = stack
+      .map((item) => `• ${item.category}: ${item.name} ($${item.price})`)
+      .join('\n');
+    
+    const summary = `🖥️ My RigVault PC Build:\n\n${buildText}\n\n⚡ Est. Power Draw: ~${totalWattage}W\n💰 Total Price: $${totalPrice.toLocaleString()}`;
+    
+    navigator.clipboard.writeText(summary);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <aside className="bg-slate-900 border border-slate-800 rounded-xl p-5 sticky top-20 shadow-xl">
-      {/* Sidebar Header */}
       <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
         <div className="flex items-center gap-2">
           <Layers className="w-5 h-5 text-orange-500" />
@@ -30,7 +39,6 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
         </span>
       </div>
 
-      {/* Stack Items / Empty State */}
       {stack.length === 0 ? (
         <div className="py-12 text-center text-slate-500 border-2 border-dashed border-slate-800 rounded-lg">
           <p className="text-xs">Your build stack is empty.</p>
@@ -44,11 +52,8 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
         </div>
       )}
 
-      {/* Summary Cards */}
       {stack.length > 0 && (
         <div className="mt-5 pt-4 border-t border-slate-800 space-y-3">
-          
-          {/* Estimated Wattage */}
           <div className="bg-slate-950 p-3 rounded-xl border border-slate-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2 text-slate-400 text-xs font-medium">
               <Zap className="w-4 h-4 text-yellow-500" />
@@ -59,7 +64,6 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
             </span>
           </div>
 
-          {/* Total Price */}
           <div className="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2 text-slate-400 text-xs font-medium">
               <DollarSign className="w-4 h-4 text-orange-500" />
@@ -70,14 +74,20 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
             </span>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-2">
             <button
+              onClick={handleCopyBuild}
+              className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-2 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/30 transition-colors"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Share2 className="w-3.5 h-3.5" />}
+              {copied ? 'Copied!' : 'Export Build'}
+            </button>
+            <button
               onClick={onClearAll}
-              className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors"
+              className="px-3 flex items-center justify-center text-xs font-semibold py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors"
+              title="Clear Build"
             >
               <Trash2 className="w-3.5 h-3.5" />
-              Clear
             </button>
           </div>
         </div>
