@@ -11,7 +11,7 @@ const ComponentCard = ({ item, onAddToBuild, isSelected }) => {
           <span className="text-xs font-semibold text-slate-400">{item.tier || item.category}</span>
         </div>
 
-        <h3 className="font-bold text-white text-base mb-1">{item.name}</h3>
+        <h3 className="font-bold text-white text-base mb-1 line-clamp-1">{item.name}</h3>
         <p className="text-xs text-slate-400 font-medium mb-3">{item.category}</p>
         <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-4">{item.description}</p>
       </div>
@@ -27,17 +27,16 @@ const ComponentCard = ({ item, onAddToBuild, isSelected }) => {
 
         <button
           onClick={() => onAddToBuild(item)}
-          disabled={isSelected}
-          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-semibold transition-all active:scale-[0.98] ${
             isSelected
-              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 cursor-not-allowed'
+              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20'
               : 'bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/20'
           }`}
         >
           {isSelected ? (
             <>
-              <Check className="w-4 h-4" />
-              In Your Build
+              <Check className="w-4 h-4 text-emerald-400" />
+              ✓ In Your Build
             </>
           ) : (
             <>
@@ -52,4 +51,3 @@ const ComponentCard = ({ item, onAddToBuild, isSelected }) => {
 };
 
 export default ComponentCard;
-// component card interaction state
