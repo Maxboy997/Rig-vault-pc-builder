@@ -41,3 +41,4 @@ Conditional rendering in React refers to the ability to render different UI elem
 React follows a **unidirectional (top-down)** data flow:
 * **Parent to Child:** Data is passed down via **Props**.
 * **Child to Parent:** Since child components cannot directly modify parent props, data flows upward via **Callback Functions** passed down as props from the parent. The child invokes this function to send data or trigger state changes in the parent.
+<!-- revision update -->
