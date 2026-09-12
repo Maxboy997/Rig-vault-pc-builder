@@ -97,3 +97,4 @@ const Sidebar = ({ stack, onRemove, onClearAll }) => {
 };
 
 export default Sidebar;
+// export format helper
