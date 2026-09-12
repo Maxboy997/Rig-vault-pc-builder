@@ -42,4 +42,9 @@ Conditional rendering in React allows components to render different UI elements
 ### 7. Explain Parent ↔ Child Data Flow.
 React follows a **unidirectional (top-down)** data flow:
 * **Parent to Child:** Data is passed down via **Props** (e.g., `App.jsx` passing `items` to `ComponentGrid`).
-* **Child to Parent:** Children communicate upward via **Callback Functions** passed as props (e.g., `ComponentCard` invoking `onAddToBuild(item)` received from `App.jsx` to update the parent's `stack` state).
+* **Child to Parent:** Children communicate upward via **Callback Functions** passed as props (e.g., `ComponentCard` invoking `onAddToBuild(item)` received from `App.jsx` to update the parent's `stack` state). 
+
+
+
+
+> **⚠️ Simulation Notice:** *This project was developed and delivered as part of a real-world freelance client simulation / contract workflow for ForgeBench.*
